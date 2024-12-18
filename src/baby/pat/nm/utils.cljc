@@ -62,7 +62,7 @@
    Returns [is-atom? is-file? safe-thing]"
           [thing ::vt/any]
           (let [is-file? (fs/exists? thing)
-                is-atom? (instance? (u/atom? thing))
+                is-atom? (u/atom? thing)
                 safe-thing (if is-file?
                              (clojure.edn/read-string (slurp thing))
                              (if is-atom?
@@ -98,6 +98,6 @@
 
 (defn-spec as-default-value-path ::vt/vec
   [thing ::vt/qkw-or-vec]
-  (let [ident (id->ident (u/id-of thing))
+  (let [ident (as-ident-path thing)
         nmsp (-> ident first namespace)]
-    (into ident (keyword nmsp nmsp))))
+    (into ident [(keyword nmsp nmsp)])))

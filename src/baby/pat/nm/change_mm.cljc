@@ -35,6 +35,6 @@
 (defn-spec change ::vt/atom-or-map
   "Takes m, path, and then the args to '(swap! c update-in p ...)' or '(update-in c p ...)'."
   ([m ::vt/atom-map-or-str path ::vt/qkw-or-vec function ::vt/fn-or-vec]
-   (*change :default m (nmu/as-ident-path function)))
+   (*change :default m path (nmu/as-ident-path function)))
   ([m ::vt/atom-map-or-str path ::vt/qkw-or-vec function ::vt/fn-or-vec args ::vt/any]
-   (*change :default m (nmu/as-ident-path path) function args)))
+   (*change :default m path (nmu/as-ident-path path) function args)))

@@ -72,9 +72,9 @@
 
 (defn-spec employ ::vt/any
   ([m ::vt/atom-map-or-str path ::vt/atom-kw-str-or-vec]
-   (apply employ [:default m path]))
+   (apply *employ [:default m path]))
   ([variant ::vt/kw m ::vt/atom-map-or-str path ::vt/atom-kw-str-or-vec]
-   (apply employ [variant m path]))
+   (apply *employ [variant m path]))
   ([variant ::vt/kw m ::vt/atom-map-or-str path ::vt/atom-kw-str-or-vec & args ::vt/any]
    (apply *employ (into [variant m path] (vec args)))))
 
